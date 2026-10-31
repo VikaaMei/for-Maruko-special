@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Juara 3</title>
+
+    <style>
+        body {
+            background-color: #EAF5FF;
+            color: #668cb8;
+            font-family: Arial,sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+        h1 {
+            color: #E99CBD;
+        }
+        p {
+            color: #668cb8;
+        }
+        .card {
+            background-color: #FFFFFF;
+            width: 280px;
+            margin:30px auto;
+            padding: 20px;
+            border-radius: 20px;
+            border: 3px solid #F8C9DC;
+            box-shadow: 0 8px 20px #B9DDFB
+        }
+
+        .main-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid #B9DDFB;
+        }
+        .crown {
+            position: absolute;
+            top: 8px;
+            left: 62%;
+            transform: translateX(-50%)
+            rotate(35deg);
+            z-index: 2;
+            font-size: 90px;
+            color: #E99CBD;
+            text-shadow: 2px 3px 5px #E99CBD;
+        }
+        button {
+    background-color: #E99CBD;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#friendship {
+    margin-top: 20px;
+    color: #668CB8;
+    line-height: 2;
+}
+
+.friendship-box {
+    background: #EAF5FF;
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+#moments {
+    margin-top: 20px;
+}
+
+.moments-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.moments-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid white;
+    box-shadow: 0 4px 10px #B9DDFB;
+}
+
+.moments-title {
+    color: #E99CBD;
+}
+
+.music-box {
+    background: #FFFFFF;
+    border: 2px solid #F8C9DC;
+    border-radius: 20px;
+    padding: 15px;
+    margin-top: 25px;
+    box-shadow: 0 5px 15px #B9DDFB;
+}
+    </style>
+</head>
+
+<body>
+    <div class="card">
+
+        <div class="photo-container">
+            <div class="crown">👑</div>
+
+        <img src="assets/liy.jpeg"
+    class="main-photo">
+
+         <h1>3rd Place Winner!</h1>
+
+        <p>Anggi Mei Liya sahabat Pikayap</p>
+<button onclick="showSurprise()">Meilen Say</button>
+
+<p id="surprise"></p>
+<button onclick="showFriendship()">
+    Since We Became Friends 
+</button>
+
+<div id="friendship"></div>
+    </div>
+    <button onclick="showMoments()">
+    Our Moments 
+</button>
+
+<div id="moments"></div>
+
+<div class="music-box">
+    <p>click to stop or play song</p>
+
+    <audio id="mySong" loop>
+        <source src="assets/hannah.mp4" type="audio/mp4">
+    </audio>
+
+    <button onclick="toggleMusic()" id="musicButton">
+        ▶ Play Music
+    </button>
+</div>
+
+    <script>
+function showSurprise() {
+    document.getElementById("surprise").innerHTML =
+    "hii im so proud of you, aku ga nyangka kamu akhirnya bisaa gapai mimpi kamuu satu persatu. aku lihat semua masalah dan struggle buat capai mimpi-mimpi kamu, semoga kamu selalu jadi orang yang pantang menyerah meski sering nangis dan sedih, meski sering ngerasa insecure/ketinggalan. aku harap, kamu ga pernah kehilangan harapan buat  menggapai impian kamu. semoga semua ini awal dari hal-hal baik atas semua usaha dan doa kamu, terimakasih banyak sudah menjadi sahabatku liyap. aku belajar banyak hal sejak bertemu kamu, semoga kita bisa berteman seterusnya —Pikayap";
+const song = document.getElementById("mySong");
+
+    song.currentTime = 79;
+
+    song.ontimeupdate = function() {
+        if (song.currentTime >= 101) {
+            song.currentTime = 79;
+        }
+    };
+
+    song.play();
+}
+
+function showFriendship() {
+    document.getElementById("friendship").innerHTML = `
+        <div class="friendship-box">
+            <h3>Since We Became Friends </h3>
+            <small>(Around March 15, 2019)</small>
+            <h2 id="friendTimer">Loading...</h2>
+            <p>Kayanyaa segituan, kurang ingat TwT...</p>
+        </div>
+    `;
+
+    function updateFriendTimer() {
+        const start = new Date(2019, 2, 15);
+        const now = new Date();
+        const diff = now - start;
+
+        const days = Math.floor(diff / 86400000);
+        const hours = Math.floor(diff / 3600000) % 24;
+        const minutes = Math.floor(diff / 60000) % 60;
+        const seconds = Math.floor(diff / 1000) % 60;
+
+        document.getElementById("friendTimer").innerHTML =
+            `${days} Days<br>
+             ${hours} Hours<br>
+             ${minutes} Minutes<br>
+             ${seconds} Seconds`;
+    }
+
+    updateFriendTimer();
+    setInterval(updateFriendTimer, 1000);
+}
+
+function showMoments() {
+    document.getElementById("moments").innerHTML = `
+        <h2 class="moments-title">Our Absurd Memories ♡</h2>
+        <p>maaf fotonya random, jarang fotbar...</p>
+
+        <div class="moments-grid">
+            <img src="assets/a.JPEG">
+            <img src="assets/b.jpeg">
+            <img src="assets/c.jpeg">
+            <img src="assets/d.jpeg">
+        </div>
+    `;
+}
+
+function toggleMusic() {
+    const song = document.getElementById("mySong");
+    const button = document.getElementById("musicButton");
+
+    const startTime = 79;
+    const endTime = 101;
+
+    if (song.paused) {
+        if (song.currentTime < startTime || song.currentTime >= endTime) {
+            song.currentTime = startTime;
+        }
+
+        song.play();
+        button.innerHTML = "Ⅱ Pause Music";
+
+        song.ontimeupdate = function() {
+            if (song.currentTime >= endTime) {
+                song.pause();
+                song.currentTime = startTime;
+                button.innerHTML = "▶ Play Music";
+            }
+        };
+    } else {
+        song.pause();
+        button.innerHTML = "▶ Play Music";
+    }
+}
+
+
+</script>
+</body>
+</html>
